@@ -1,0 +1,23 @@
+{
+  "name": "PassPoint",
+  "short_name": "PassPoint",
+  "description": "RFID-powered attendance tracking with real-time monitoring and easy reports.",
+  "lang": "en-US",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1B5E20",
+  "theme_color": "#27AE60",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

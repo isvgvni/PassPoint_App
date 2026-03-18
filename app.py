@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, send_from_directory
 from flask_socketio import SocketIO
 from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='static/templates', static_folder='static')
 socketio = SocketIO(app=app, cors_allowed_origins="*")
 
 students_data = {
@@ -61,6 +61,16 @@ class_scheduled = {
 @app.route('/')
 def login():
     return render_template('index.html')
+
+@app.route('/manifest.json')
+def manifest():
+    return send_from_directory(app.static_folder, 'manifest.json')
+
+@app.route('/sw.js')
+def serve_sw():
+    response = send_from_directory(app.static_folder, 'sw.js')
+    response.headers['Cache-Control'] = 'no-cache'
+    return response
 
 # ── Scan RFID ──
 @app.route('/scan_rfid', methods=["POST"])
